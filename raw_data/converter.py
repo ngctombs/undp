@@ -46,7 +46,7 @@ for x in isoSet:
 	for y in isoSet[x]:
 		if y[0] not in indicatorDict :
 			indicatorDict[y[0]] = dict()
-		indicatorDict[y[0]][x] = y[1]
+		indicatorDict[y[0]][x] = float(y[1])
 
 #STEP 4 : write clean sets to files
 for x in indicatorDict.keys():
