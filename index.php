@@ -10,22 +10,44 @@
 		<script src="js/functions.js"></script>
 
 <?php
+// use if($_POST) (post[lang]=='en') & Ajax codes from JS. Add a class to the relevant language based on Post to make it look active
 $titles_o = fopen("json/title_dict.json", "r");
 $titles_r = fread($titles_o, filesize("json/title_dict.json"));
-$x = json_decode($titles_r, true);
-foreach($x as $key => $value){
-		echo($key);
-		foreach($key)
+$titles = json_decode($titles_r, true);
+
+$descr_o = fopen("json/descr_dict.json", "r");
+$descr_r = fread($descr_o, filesize("json/descr_dict.json"));
+$descr = json_decode($descr_r, true);
+
+if ($_POST) {
+	$lang = $_POST['lang'];
+} else {
+	$lang = 'en';
 }
+
 ?>
 	</head>
 	<body>
+		<div class="language_mini_box">
+			<div>EN</div>
+			<div>ES</div>
+			<div>FR</div>
+		</div>
 		<ul id="nav">
 			<?php foreach (scandir('json') as $json) { if (substr($json, 0, 9) == 'indicator') { ?>
-					<li class="data_link" id="<?php echo $json?>"><?php echo $json //NEED THE TITLE HERE?></li>
+				<?php $json_id = substr($json, 0, strrpos($json, '.')); ?>
+
+				<li class="data_link" id="<?php echo $json; ?>"><?php echo $titles[$json_id]['title_' . $lang]; //NEED THE TITLE HERE?>
+					<div class="description_box">
+						<?php echo $descr[$json_id]['descr_' . $lang];?>
+					</div>
+				</li>
 			<?php }}	?>
 		</ul>
 		<div id="world-map"></div>
+		<div class="cat_title">
+			UNDP Statistic Title Placeholder
+		</div>
 		<div id="text"></div>
 
 		<footer class="footer">
@@ -36,11 +58,6 @@ foreach($x as $key => $value){
 					UNDP Home
 				</div>
 			</a>
-			<div class="cat_wrapper">
-				<div class="cat_title">
-					UNDP Statistic Title Placeholder
-				</div>
-			</div>
 		</footer>
 	</body>
 </html>

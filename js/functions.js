@@ -1,21 +1,17 @@
 $(document).ready(function(){
 
-	$('.footab').mouseenter(function() {
-		$(this).hide();
-		$(this).next('.footext').show();
-	});
-	$('.footext').mouseleave(function() {
-		$(this).hide();
-		$(this).prev('.footab').show();
-	});
-
 	var $dataSet = new Object();
-	initiateJSON('json/indicator_100106.json');
+	initiateJSON('json/indicator_103106.json');
+	$('li#indicator_103106.json').addClass('active_data_set');
 
 	$('.data_link').click(function() {
 		callJSON('json/' + $(this)[0].getAttribute('id'));
+		$('.cat_title').html($(this).html());
+		$('.data_link').removeClass('active_data_set');
+		$(this).addClass('active_data_set')
+		$('.description_box').hide();
+		$(this).children('.description_box').show();
 	});
-
 
 	function callJSON (url) {
 		$.getJSON(url, function(data) {
@@ -53,4 +49,23 @@ $(document).ready(function(){
 	        }
 	    });
     }
+
+    /* Footer and navbar jQuery */
+
+    $('.footab').mouseenter(function() {
+		$(this).hide();
+		$(this).next('.footext').show();
+	});
+
+	$('.footext').mouseleave(function() {
+		$(this).hide();
+		$(this).prev('.footab').show();
+	});
+
+	$('#nav li').mouseenter(function() {
+		$(this).css('opacity', '0.7');
+	});
+	$('#nav li').mouseleave(function() {
+		$(this).css('opacity', '1');
+	});
 });
