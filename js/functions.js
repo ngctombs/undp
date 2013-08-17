@@ -1,11 +1,25 @@
 $(document).ready(function(){
 	var $dataSet = new Object();
-	callJSON('json/indicator_100106.json');
+	initiateJSON('json/indicator_100106.json');
+
+	$('.data_link').click(function() {
+		callJSON('json/' + $(this)[0].getAttribute('id'));
+	});
+
+
+
 	function callJSON (url) {
+		$.getJSON(url, function(data) {
+			$('#world-map').vectorMap('set', 'values', data);
+		});
+	}
+
+	function initiateJSON (url) {
 		$.getJSON(url, function(data) {
 			setMap(data);
 		});
 	}
+
     function setMap (data) {
     	$('#world-map').vectorMap({
 	        map: 'world_mill_en',

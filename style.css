@@ -1,0 +1,32 @@
+body {
+	margin: 0;
+}
+
+#world-map {
+	width: 80%; 
+	height: 600px;
+	float: left;
+}
+
+#nav {
+	width: 20%; 
+	height: 600px;
+	float: left;
+	overflow: scroll;
+}
+
+#nav a {
+	display: block;
+	background-color: #5B92E5;
+	border: 1px solid #fff;
+}
+
+footer {
+	clear: both;
+}
+
+.footab.undp_link {
+	height: 50px;
+	background: url(images/undp.jpg) center no-repeat;
+	background-size: 80px;
+}
