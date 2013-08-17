@@ -49,9 +49,21 @@ for x in isoSet:
 		indicatorDict[y[0]][x] = float(y[1])
 
 #STEP 4 : write clean sets to files
+"""
 for x in indicatorDict.keys():
 	indicatorFile = open( x + '.json', 'w' )
 	indicatorFile.write(json.dumps( indicatorDict[x] ))
 	indicatorFile.close()
+"""
+#STEP 5 : Get cleaned up titles and descriptions
+hdiInput = open( 'un_hdi.xml' )
+hdi = xmltodict.parse( hdiInput )
+
+titleDict = {x['@id']:{'title_' + y['@xml:lang']: y['#text'] for y in x['info']['name']['value']}for x in hdi['dspl']['concepts']['concept']}
+descrDict = {x['@id']:{'descr_' + y['@xml:lang']: y['#text'] for y in x['info']['description']['value']}for x in hdi['dspl']['concepts']['concept']}
+
+titleDictDump = open('titleDict.json')
+titleDictDump.write(json.dumps( titleDict ))
+titleDict.close()
 
 print('Victory is mine!')

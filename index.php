@@ -12,11 +12,11 @@
 
 	</head>
 	<body>
-		<div id="nav">
+		<ul id="nav">
 			<?php foreach (scandir('json') as $json) { if (substr($json, 0, 9) == 'indicator') { ?>
-					<a class="data_link" id="<?php echo $json?>"><?php echo $json?></a>
+					<li class="data_link" id="<?php echo $json?>"><?php echo $json //NEED THE TITLE HERE?></li>
 			<?php }}	?>
-		</div>
+		</ul>
 		<div id="world-map"></div>
 		<div id="text"></div>
 
@@ -28,6 +28,11 @@
 					UNDP Home
 				</div>
 			</a>
+			<div class="cat_wrapper">
+				<div class="cat_title">
+					UNDP Statistic Title Placeholder
+				</div>
+			</div>
 		</footer>
 	</body>
 </html>
