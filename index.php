@@ -1,20 +1,26 @@
+<?php
+//Author: Nathanael Tombs
+//License: GNU2 - have at it
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>UN HDI</title>
-		<link rel="stylesheet" media="all" href="js/jvectormap/jquery-jvectormap-1.2.2.css"/>
+		<link rel="stylesheet" media="all" href="js/jvectormap/jquery-jvectormap-1.1.1.css"/>
 		<link rel="stylesheet" media="all" href="style.css"/>
 		<script src="js/jquery-2.0.3.min.js"></script>
-		<script src="js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+		<script src="js/jvectormap/jquery-jvectormap-1.1.1.min.js"></script>
 		<script src="js/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 		<script src="js/functions.js"></script>
 
 <?php
 //STACK:
-//Load during book
 //make it responsive
 //add chose colour buttons
 //Add tooltips
+//Add a cycle function
+
 $titles_o = fopen("json/title_dict.json", "r");
 $titles_r = fread($titles_o, filesize("json/title_dict.json"));
 $titles = json_decode($titles_r, true);
@@ -35,18 +41,21 @@ if ($_REQUEST) {
 			<?php foreach (scandir('json') as $json) { if (substr($json, 0, 9) == 'indicator') { ?>
 				<?php $json_id = substr($json, 0, strrpos($json, '.')); ?>
 
-				<li class="data_link" id="<?php echo $json; ?>"><?php echo utf8_decode($titles[$json_id]['title_' . $lang]); //NEED THE TITLE HERE?>
+				<li class="data_link" id="<?php echo $json; ?>"><span><?php echo utf8_decode($titles[$json_id]['title_' . $lang]); //NEED THE TITLE HERE?></span>
 					<div class="description_box">
 						<?php echo utf8_decode($descr[$json_id]['descr_' . $lang]);?>
 					</div>
 				</li>
 			<?php }}	?>
 		</ul>
-		<div id="world-map"></div>
-		<div class="cat_title">
-			HDI: Human Development Index (HDI) value
+		<div class="background-orange">
+			<div id="world-map">
+				<div class="cat_title">
+					HDI: Human Development Index (HDI) value
+				</div>
+			</div>
+			<div id="text"></div>
 		</div>
-		<div id="text"></div>
 
 <div class="foobar">
 	<div class="undp_link footab"></div>
@@ -63,6 +72,7 @@ if ($_REQUEST) {
 	</div>
 	<div class="lightbox lightbox_mask">
 		<div class="escape">x</div>
+		<div class="loading">LOADING...</div>
 		<div data-configid="0/1298910" class="issuuembed"></div><script type="text/javascript" src="//e.issuu.com/embed.js" async="true"></script>
 	</div>
 

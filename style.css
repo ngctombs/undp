@@ -1,6 +1,5 @@
 body {
 	height: 100%;
-	width: 100%;
 	min-width: 400px;
 	min-height: 400px;
 	margin: 0;
@@ -16,6 +15,7 @@ a {
 	min-width: 200px; 
 	height: 600px;
 	float: left;
+	border-right: 9px solid #F1C62F;
 }
 
 #nav {
@@ -30,17 +30,25 @@ a {
 	font-size: 14px;
 }
 
+#nav li span {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 10px solid #ccc;
+}
+
 #nav li {
 	display: block;
 	background-color: #7EBDF2;
 	border-bottom: 1px solid #fff;
 	cursor: pointer;
-	padding: 7px;
+	padding: 10px;
+	text-align: center
 }
 
 .description_box {
-	padding: 5px;
-	color: #000;
+	text-align: left;
+	padding: 10px;
+	color: #333;
 	display: none;
 	font-size: 14px;
 }
@@ -80,6 +88,10 @@ a {
 	background-size: 80px;
 } 
 
+.footext {
+	background-color: #F8C768;
+}
+
 .footab, .footext {
 	width: 25%;
 	height: 100px;
@@ -92,22 +104,9 @@ a {
 	font-size: 20px;
 	font-variant: small-caps;
 	display: none;
-	background-color: #3399FF;
 	color: #fff;
 	position: relative;
 	cursor: pointer;
-}
-
-.foobar .footext.undp_link {
-	background-color: #27318B;
-}
-
-.foobar .footext.lang_2, .foobar .footext.read_report {
-	background-color: #4099FF;
-}
-
-.foobar .footext.lang_1 {
-	background-color: #3B5998;
 }
 
 .foobar .footext .text_tag {
@@ -117,22 +116,15 @@ a {
 	top: 0; left: 0; bottom: 0; right: 0;
 }
 
-
-.cat_wrapper {
-	width: 80%;
-	height: 100px;
-	float: left;
-	position: relative;
-}
-
 .cat_title {
-	height: 30px;
 	margin: auto;
 	position: absolute;
-	top: 550px; right: 50px;
+	top: 540px; right: 50px;
 	text-align: center;
-	font-size: 30px;
-	color: #EFDB55;
+	font-size: 40px;
+	color: #112F61;
+	font-weight: bold;
+	z-index: 250;
 }
 
 .lightbox {
@@ -159,6 +151,14 @@ a {
 	position: absolute;
 	top: 10px;
 	left: 10px;
+}
+
+.lightbox .loading{
+	font-size: 40px;
+	position: absolute;
+	top: 45%;
+	left: 45%;
+	z-index: -1;
 }
 
 .langform {

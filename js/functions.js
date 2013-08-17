@@ -4,6 +4,7 @@ $(document).ready(function(){
 	initiateJSON('json/indicator_103106.json');
 	$('ul li:nth-child(3)').addClass('active_data_set');
 	$('ul li:nth-child(3) .description_box').show();
+	$('.cat_title').html($('ul li:nth-child(3) span').html());
 
 	$('.data_link').click(function() {
 		callJSON('json/' + $(this)[0].getAttribute('id'));
@@ -47,14 +48,15 @@ $(document).ready(function(){
 				normalizeFunction: 'polynomial',
 				values: data
 			  }]
-			},	
-			onLabelShow: function(event, label, code){
-				alert(label.html() + " (" + 'data[code]' + ")");
-			}
+			},
+			onRegionLabelShow: function(e, el, code){
+		      el.html(el.html()+'<br/>' + $('.cat_title').html() + ' : ' + data[code]);
+		    }	
 		});
 	}
 
-	$('.jvectormap-label').css('visibility', 'none');	
+	//scroll in - click on jvectormap-zoomin
+	//scroll out - click on jvectormap-zoomout
 
 	/* Footer and navbar jQuery */
 
