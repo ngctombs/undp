@@ -1,30 +1,30 @@
 $(document).ready(function(){
-	var $data;
-	$.getJSON('json/indicator_100106.json', function(data) {
-		console.log(data);
-		$data = data;
-	});
-
-	$('#world-map').vectorMap({
-		map: 'world_mill_en',
-		backgroundColor:'#5B92E5',
-		regionStyle:{
-		    initial:{
-				fill:'#fff',
-				stroke: 'white',
-				"stroke-width": 0.3,
-				"stroke-opacity": 1	
-			}
-		},
-		series: {
-			regions: [{
-				values: $data,
-				scale: ['#C8EEFF', '#0071A4'],
-				normalizeFunction: 'polynomial'
-			}]
-		}	
-		//onLabelShow: function(e, el, code){
-		//	el.html(el.html()+' (GDP - '+ $data[code]+')');
-		//}
-	});
+	var $dataSet = new Object();
+	callJSON('json/indicator_100106.json');
+	function callJSON (url) {
+		$.getJSON(url, function(data) {
+			setMap(data);
+		});
+	}
+    function setMap (data) {
+    	$('#world-map').vectorMap({
+	        map: 'world_mill_en',
+	        backgroundColor:'#5B92E5',
+			regionStyle:{
+			    initial:{
+					fill:'#fff',
+					stroke: 'white',
+					"stroke-width": 0.3,
+					"stroke-opacity": 1	
+				}
+			},
+	        series: {
+	          regions: [{
+	            scale: ['#FEEDC8', '#D69304'],
+	            normalizeFunction: 'polynomial',
+	            values: data
+	          }]
+	        }
+	    });
+    }
 });
