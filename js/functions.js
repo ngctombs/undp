@@ -49,8 +49,7 @@ $(document).ready(function(){
 			  }]
 			},	
 			onLabelShow: function(event, label, code){
-				alert('sda');
-				// label.html(label.html() + " (" + 'data[code]' + ")");
+				alert(label.html() + " (" + 'data[code]' + ")");
 			}
 		});
 	}
@@ -58,16 +57,6 @@ $(document).ready(function(){
 	$('.jvectormap-label').css('visibility', 'none');	
 
 	/* Footer and navbar jQuery */
-
-	$('.footab').mouseenter(function() {
-		$(this).hide();
-		$(this).next('.footext').show();
-	});
-
-	$('.footext').mouseleave(function() {
-		$('.footext').hide();
-		$('.footab').show();
-	});
 
 	$('#nav li').mouseenter(function() {
 		$(this).css('opacity', '0.7');
@@ -91,14 +80,23 @@ $(document).ready(function(){
 		$('.lightbox').removeClass('lightbox_mask');
 	});
 
+	$('.lang_1').click(function() {
+		$('.langfield').val('fr');
+		$('.langform').submit();
+	});
+
+	$('.lang_2').click(function() {
+		$('.langfield').val('es');
+		$('.langform').submit();
+	});
+
 	$('.footab').mouseenter(function() {
-		$('.footab').show();
-		$('.footext').hide();
 		$(this).hide();
 		$(this).next('.footext').show();
 	});
+
 	$('.footext').mouseleave(function() {
 		$(this).hide();
 		$(this).prev('.footab').show();
-	})
+	});
 });

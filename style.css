@@ -1,5 +1,8 @@
 body {
 	height: 100%;
+	width: 100%;
+	min-width: 400px;
+	min-height: 400px;
 	margin: 0;
 	font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
@@ -9,14 +12,16 @@ a {
 }
 
 #world-map {
-	width: 80%; 
+	width: 80%;
+	min-width: 200px; 
 	height: 600px;
 	float: left;
 }
 
 #nav {
 	border-right: 5px solid #F1C62F;
-	width: 19.5%; 
+	width: 19%;
+	min-width: 95px; 
 	height: 600px;
 	float: left;
 	padding: 0;
@@ -154,4 +159,8 @@ a {
 	position: absolute;
 	top: 10px;
 	left: 10px;
+}
+
+.langform {
+	display: none;
 }

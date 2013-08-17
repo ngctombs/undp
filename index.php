@@ -10,7 +10,7 @@
 		<script src="js/functions.js"></script>
 
 <?php
-//STACK: Make buttons post to url (bot bar)
+//STACK:
 //Load during book
 //make it responsive
 //add chose colour buttons
@@ -23,10 +23,9 @@ $descr_o = fopen("json/descr_dict.json", "r");
 $descr_r = fread($descr_o, filesize("json/descr_dict.json"));
 $descr = json_decode($descr_r, true);
 
-if ($_POST) {
-	$lang = $_POST['lang'];
-} else {
-	$lang = 'en';
+$lang = 'en';
+if ($_REQUEST) {
+	$lang = $_REQUEST['lang'];
 }
 
 ?>
@@ -36,9 +35,9 @@ if ($_POST) {
 			<?php foreach (scandir('json') as $json) { if (substr($json, 0, 9) == 'indicator') { ?>
 				<?php $json_id = substr($json, 0, strrpos($json, '.')); ?>
 
-				<li class="data_link" id="<?php echo $json; ?>"><?php echo $titles[$json_id]['title_' . $lang]; //NEED THE TITLE HERE?>
+				<li class="data_link" id="<?php echo $json; ?>"><?php echo utf8_decode($titles[$json_id]['title_' . $lang]); //NEED THE TITLE HERE?>
 					<div class="description_box">
-						<?php echo $descr[$json_id]['descr_' . $lang];?>
+						<?php echo utf8_decode($descr[$json_id]['descr_' . $lang]);?>
 					</div>
 				</li>
 			<?php }}	?>
@@ -67,24 +66,28 @@ if ($_POST) {
 		<div data-configid="0/1298910" class="issuuembed"></div><script type="text/javascript" src="//e.issuu.com/embed.js" async="true"></script>
 	</div>
 
-	<div class="lang_1 footab" <?php if ($lang == 'fr') {echo 'style="display:none;"';}?>></div>
-	<a href="" target="_blank" class="lang_1 footext">
+	<div class="lang_1 lang footab" <?php if ($lang == 'fr') {echo 'style="display:none;"';}?>></div>
+	<a class="lang_1 footext">
 		<div class="text_tag">
 			French
 		</div>
 	</a>
-	<div class="lang_2 footab" <?php if ($lang == 'es') {echo 'style="display:none;"';}?>></div>
-	<a href="" target="_blank" class="lang_2 footext">
+	<div class="lang_2 lang footab" <?php if ($lang == 'es') {echo 'style="display:none;"';}?>></div>
+	<a class="lang_2 footext">
 		<div class="text_tag">
 			Spanish
 		</div>
 	</a>
-	<div class="lang_3 footab" <?php if ($lang == 'en') {echo 'style="display:none;"';}?>></div>
-	<a href="" target="_blank" class="lang_1 footext">
+	<div class="lang_3 lang footab" <?php if ($lang == 'en') {echo 'style="display:none;"';}?>></div>
+	<a href="/undp_hack/" class="lang_3 footext">
 		<div class="text_tag">
 			English
 		</div>
 	</a>
+	<form class='langform' method='get' action=''>
+	<input class='langfield' type='text' name='lang' />
+	<input class='langsubmit' type='submit' />
+	</form>
 </div>
 </body>
 </html>
