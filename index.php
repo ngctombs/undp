@@ -9,7 +9,15 @@
 		<script src="js/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 		<script src="js/functions.js"></script>
 
-
+<?php
+$titles_o = fopen("json/title_dict.json", "r");
+$titles_r = fread($titles_o, filesize("json/title_dict.json"));
+$x = json_decode($titles_r, true);
+foreach($x as $key => $value){
+		echo($key);
+		foreach($key)
+}
+?>
 	</head>
 	<body>
 		<ul id="nav">
