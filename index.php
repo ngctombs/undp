@@ -54,6 +54,7 @@ if ($_REQUEST) {
 					HDI: Human Development Index (HDI) value
 				</div>
 			</div>
+			<div class='right_nav'><div class="escape">x</div><div class='right_nav_inner'></div></div>
 			<div id="text"></div>
 		</div>
 

@@ -39,6 +39,10 @@ countrySet = {data['DocumentElement']['Table1'][z]['country'] : [(x, data['Docum
 
 #STEP 2 : replace UN Country codes by ISO-2 codes (eg. CA, US, etc.)
 isoSet = {countries[z]['iso2']:countrySet[countries[z]['country']] for z in range(len(countries)) if countries[z]['country'] in countrySet }
+for x in isoSet:
+	indicatorFile = open( x + '.json', 'w' )
+	indicatorFile.write(json.dumps( isoSet[x] ))
+	indicatorFile.close()
 
 #STEP 3 : change from country:[(indicator, value), ..] to indicator:[(country, value), ...]
 indicatorDict = dict()

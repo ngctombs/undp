@@ -30,6 +30,22 @@ $(document).ready(function(){
 		});
 	}
 
+	function getISOJSON (code, name) {
+		$.getJSON('json/' + code + '.json', function(data) {
+			$('.right_nav_inner').html('');
+			var fString = '<h1>' + name + '</h1><br />';
+			for (x in data) {
+				fString += data[x][0] + ' : ' + data[x][1] + '<br />';
+			}
+			$('.right_nav_inner').html(fString);
+			$('.right_nav').show();
+		}).done(function() {
+			$.getJSON('json/title_dict.json', function(data) {
+				alert(fString);
+			});
+		});
+	}
+
 	function setMap (data) {
 		$('#world-map').vectorMap({
 			map: 'world_mill_en',
@@ -49,9 +65,14 @@ $(document).ready(function(){
 				values: data
 			  }]
 			},
+			zoomOnScroll: true,
 			onRegionLabelShow: function(e, el, code){
-		      el.html(el.html()+'<br/>' + $('.cat_title').html() + ' : ' + data[code]);
-		    }	
+		    	el.html('<div class="custom_label"><h1>' + el.html()+'</h1><br/>' + $('.cat_title').html() + '<br /><h2>' + data[code]) + '</h2></div>';
+		    },
+		    onRegionClick: function(e, code){
+		    	var map = $('#world-map').vectorMap('get', 'mapObject');
+		    	getISOJSON(code, map.getRegionName(code));
+		    }
 		});
 	}
 
@@ -76,6 +97,10 @@ $(document).ready(function(){
 
 	$('.lightbox .escape').click(function() {
 		$('.lightbox').addClass('lightbox_mask');
+	});
+
+	$('.right_nav .escape').click(function() {
+		$('.right_nav').hide();
 	});
 
 	$('.light-link').click(function() {
