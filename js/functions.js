@@ -35,13 +35,17 @@ $(document).ready(function(){
 			$('.right_nav_inner').html('');
 			var fString = '<h1>' + name + '</h1><br />';
 			for (x in data) {
-				fString += data[x][0] + ' : ' + data[x][1] + '<br />';
+				fString += data[x][0] + ' <br /><h2>' + data[x][1] + '</h2><br />';
 			}
 			$('.right_nav_inner').html(fString);
-			$('.right_nav').show();
 		}).done(function() {
 			$.getJSON('json/title_dict.json', function(data) {
-				alert(fString);
+				var x = $('.right_nav_inner').html();
+				for (y in data) {
+					x = x.replace(y, data[y]['title_en']);
+				}
+				$('.right_nav_inner').html(x);
+				$('.right_nav').show();
 			});
 		});
 	}
@@ -92,6 +96,7 @@ $(document).ready(function(){
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) { 
 			$('.lightbox').addClass('lightbox_mask');
+			$('.right_nav').hide();
 		};
 	});
 
