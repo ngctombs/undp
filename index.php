@@ -10,7 +10,11 @@
 		<script src="js/functions.js"></script>
 
 <?php
-// use if($_POST) (post[lang]=='en') & Ajax codes from JS. Add a class to the relevant language based on Post to make it look active
+//STACK: Make buttons post to url (bot bar)
+//add download link to the undp report
+//make it responsive
+//add chose colour buttons
+//Add tooltips
 $titles_o = fopen("json/title_dict.json", "r");
 $titles_r = fread($titles_o, filesize("json/title_dict.json"));
 $titles = json_decode($titles_r, true);
@@ -28,11 +32,6 @@ if ($_POST) {
 ?>
 	</head>
 	<body>
-		<div class="language_mini_box">
-			<div>EN</div>
-			<div>ES</div>
-			<div>FR</div>
-		</div>
 		<ul id="nav">
 			<?php foreach (scandir('json') as $json) { if (substr($json, 0, 9) == 'indicator') { ?>
 				<?php $json_id = substr($json, 0, strrpos($json, '.')); ?>
@@ -46,18 +45,40 @@ if ($_POST) {
 		</ul>
 		<div id="world-map"></div>
 		<div class="cat_title">
-			UNDP Statistic Title Placeholder
+			HDI: Human Development Index (HDI) valuex`
 		</div>
 		<div id="text"></div>
 
-		<footer class="footer">
-			<div class="undp_link footab">
-			</div>
-			<a href = "http://www.undp.org/" target="_blank" class="undp_link footext">
-				<div class="text_tag">
-					UNDP Home
-				</div>
-			</a>
-		</footer>
-	</body>
+<div class="foobar">
+	<div class="undp_link footab"></div>
+	<a href = "http://www.undp.org/" target="_blank" class="undp_link footext">
+		<div class="text_tag">
+			UNDP Home
+		</div>
+	</a>
+	<div class="read_report footab"></div>
+	<div class="read_report footext">
+		<a class="light-link text_tag">
+			Read the 2013 UNDP report
+		</a>
+	</div>
+	<div class="lightbox lightbox_mask">
+		<div class="escape">x</div>
+		<div data-configid="0/1298910" class="issuuembed"></div><script type="text/javascript" src="//e.issuu.com/embed.js" async="true"></script>
+	</div>
+	</div>
+	<div class="lang_1 navtab"></div>
+	<a href="" target="_blank" class="lang_1 footext">
+		<div class="text_tag">
+			English
+		</div>
+	</a>
+	<div class="lang_2 navtab"></div>
+	<a href="" target="_blank" class="lang_2 footext">
+		<div class="text_tag">
+			Spanish
+		</div>
+	</a>
+</div>
+</body>
 </html>

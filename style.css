@@ -1,4 +1,5 @@
-body {
+html {
+	height: 100%;
 	margin: 0;
 	font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
@@ -36,11 +37,6 @@ a {
 	padding: 7px;
 }
 
-footer {
-	clear: both;
-	border-top: 5px solid #F1C62F;
-}
-
 .description_box {
 	padding: 5px;
 	color: #000;
@@ -48,48 +44,68 @@ footer {
 	font-size: 14px;
 }
 
-.language_mini_box {
-	position: absolute;
-	right: 10px;
-	z-index: 100;
+.foobar {
+	clear: both;
+	border-top: 5px solid #F1C62F;
 }
 
-.language_mini_box div {
-	float: right;
-	border: 1px solid blue;
-	border-radius: 5px;
-	width: 20px;
-	height: 20px;
-	margin: 5px;
+.foobar .footab.undp_link {
+	background: url(images/undp.jpg) center no-repeat;
+	background-size: 80px;
+}
+
+.foobar .footab.read_report {
+	background: url(images/report-icon.png) center no-repeat;
+	background-size: 80px;
+} 
+
+.foobar .footab.lang_1 {
+	background: url(images/like.png) center no-repeat;
+	background-size: 80px;
+} 
+
+.foobar .footab.lang_2 {
+	background: url(images/twitter.png) center no-repeat;
+	background-size: 80px;
+} 
+
+.foobar .footab, .foobar .footext {
+	width: 25%;
+	height: 100px;
+	float: left;
+	position: relative;
+}
+
+.foobar .footext {
+	text-align: center;
+	font-size: 20px;
+	font-variant: small-caps;
+	display: none;
+	background-color: #3399FF;
+	color: #fff;
+	position: relative;
 	cursor: pointer;
 }
 
-.undp_link {
-	height: 100px;
-	width: 20%;
-	float: left;
+.foobar .footext.undp_link {
+	background-color: #27318B;
 }
 
-.footab {
-	background: url(images/undp.jpg) center no-repeat;
-	background-size: 90px;
+.foobar .footext.lang_2, .foobar .footext.read_report {
+	background-color: #4099FF;
 }
 
-.footext {
-	text-align: center;
-	display: none;
-	position: relative;
-	background-color: #5B92E5;
+.foobar .footext.lang_1 {
+	background-color: #3B5998;
 }
 
-.footext .text_tag {
-	height: 100%;
-	color: #fff;
+.foobar .footext .text_tag {
 	height: 20px;
 	margin: auto;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
 }
+
 
 .cat_wrapper {
 	width: 80%;
@@ -105,10 +121,32 @@ footer {
 	top: 550px; right: 50px;
 	text-align: center;
 	font-size: 30px;
-	color: #F1C62F;
+	color: #EFDB55;
 }
 
 .active_data_set {
 	background-color: #ccc;
 	color: #fff;
+}
+
+.lightbox {
+	position: fixed;
+	top: 0; right: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+
+.lightbox_mask {
+	display: none;
+}
+
+.lightbox .escape {
+	color: #ccc;
+	border-radius: 50%;
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	text-align: center;
+	z-index: 1000;
 }
