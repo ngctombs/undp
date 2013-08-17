@@ -1,4 +1,4 @@
-html {
+body {
 	height: 100%;
 	margin: 0;
 	font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
@@ -26,10 +26,6 @@ a {
 }
 
 #nav li {
-	background-color: #7EBDF2;
-}
-
-#nav li {
 	display: block;
 	background-color: #7EBDF2;
 	border-bottom: 1px solid #fff;
@@ -42,6 +38,11 @@ a {
 	color: #000;
 	display: none;
 	font-size: 14px;
+}
+
+#nav li.active_data_set {
+	background-color: #F8C768;
+	color: #fff;
 }
 
 .foobar {
@@ -59,17 +60,22 @@ a {
 	background-size: 80px;
 } 
 
-.foobar .footab.lang_1 {
-	background: url(images/like.png) center no-repeat;
+.foobar .lang_1.footab {
+	background: url(images/France.png) center no-repeat;
 	background-size: 80px;
 } 
 
-.foobar .footab.lang_2 {
-	background: url(images/twitter.png) center no-repeat;
+.foobar .lang_2.footab {
+	background: url(images/Spain.png) center no-repeat;
+	background-size: 80px;
+}
+
+.foobar .lang_3.footab {
+	background: url(images/UK.png) center no-repeat;
 	background-size: 80px;
 } 
 
-.foobar .footab, .foobar .footext {
+.footab, .footext {
 	width: 25%;
 	height: 100px;
 	float: left;
@@ -124,17 +130,13 @@ a {
 	color: #EFDB55;
 }
 
-.active_data_set {
-	background-color: #ccc;
-	color: #fff;
-}
-
 .lightbox {
 	position: fixed;
 	top: 0; right: 0;
 	width: 100%;
 	height: 100%;
 	background-color: #fff;
+	z-index: 250;
 }
 
 .lightbox_mask {
@@ -142,11 +144,14 @@ a {
 }
 
 .lightbox .escape {
-	color: #ccc;
 	border-radius: 50%;
 	cursor: pointer;
-	height: 20px;
-	width: 20px;
+	height: 40px;
+	width: 40px;
+	font-size: 40px;
 	text-align: center;
 	z-index: 1000;
+	position: absolute;
+	top: 10px;
+	left: 10px;
 }

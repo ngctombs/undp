@@ -2,7 +2,8 @@ $(document).ready(function(){
 
 	var $dataSet = new Object();
 	initiateJSON('json/indicator_103106.json');
-	$('#indicator_103106.json').addClass('active_data_set');
+	$('ul li:nth-child(3)').addClass('active_data_set');
+	$('ul li:nth-child(3) .description_box').show();
 
 	$('.data_link').click(function() {
 		callJSON('json/' + $(this)[0].getAttribute('id'));

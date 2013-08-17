@@ -11,7 +11,7 @@
 
 <?php
 //STACK: Make buttons post to url (bot bar)
-//add download link to the undp report
+//Load during book
 //make it responsive
 //add chose colour buttons
 //Add tooltips
@@ -45,7 +45,7 @@ if ($_POST) {
 		</ul>
 		<div id="world-map"></div>
 		<div class="cat_title">
-			HDI: Human Development Index (HDI) valuex`
+			HDI: Human Development Index (HDI) value
 		</div>
 		<div id="text"></div>
 
@@ -57,8 +57,8 @@ if ($_POST) {
 		</div>
 	</a>
 	<div class="read_report footab"></div>
-	<div class="read_report footext">
-		<a class="light-link text_tag">
+	<div class="light-link read_report footext">
+		<a class="text_tag">
 			Read the 2013 UNDP report
 		</a>
 	</div>
@@ -66,17 +66,23 @@ if ($_POST) {
 		<div class="escape">x</div>
 		<div data-configid="0/1298910" class="issuuembed"></div><script type="text/javascript" src="//e.issuu.com/embed.js" async="true"></script>
 	</div>
-	</div>
-	<div class="lang_1 navtab"></div>
+
+	<div class="lang_1 footab" <?php if ($lang == 'fr') {echo 'style="display:none;"';}?>></div>
 	<a href="" target="_blank" class="lang_1 footext">
 		<div class="text_tag">
-			English
+			French
 		</div>
 	</a>
-	<div class="lang_2 navtab"></div>
+	<div class="lang_2 footab" <?php if ($lang == 'es') {echo 'style="display:none;"';}?>></div>
 	<a href="" target="_blank" class="lang_2 footext">
 		<div class="text_tag">
 			Spanish
+		</div>
+	</a>
+	<div class="lang_3 footab" <?php if ($lang == 'en') {echo 'style="display:none;"';}?>></div>
+	<a href="" target="_blank" class="lang_1 footext">
+		<div class="text_tag">
+			English
 		</div>
 	</a>
 </div>
