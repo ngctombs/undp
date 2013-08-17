@@ -1,4 +1,14 @@
 $(document).ready(function(){
+
+	$('.footab').mouseenter(function() {
+		$(this).hide();
+		$(this).next('.footext').show();
+	});
+	$('.footext').mouseleave(function() {
+		$(this).hide();
+		$(this).prev('.footab').show();
+	});
+
 	var $dataSet = new Object();
 	initiateJSON('json/indicator_100106.json');
 
@@ -7,10 +17,12 @@ $(document).ready(function(){
 	});
 
 
-
 	function callJSON (url) {
 		$.getJSON(url, function(data) {
-			$('#world-map').vectorMap('set', 'values', data);
+			var mapObject = $('#world-map').vectorMap('get', 'mapObject');
+			console.log(mapObject.series.regions[0]);
+	        mapObject.remove();
+	        setMap(data);
 		});
 	}
 
