@@ -5,7 +5,7 @@ $(document).ready(function(){
 		$data = data;
 	});
 
-	$('#world-map-gdp').vectorMap({
+	$('#world-map').vectorMap({
 		map: 'world_mill_en',
 		backgroundColor:'#5B92E5',
 		regionStyle:{
@@ -13,7 +13,7 @@ $(document).ready(function(){
 				fill:'#fff',
 				stroke: 'white',
 				"stroke-width": 0.3,
-				"stroke-opacity": 1
+				"stroke-opacity": 1	
 			}
 		},
 		series: {
@@ -23,8 +23,8 @@ $(document).ready(function(){
 				normalizeFunction: 'polynomial'
 			}]
 		}	
-		onLabelShow: function(e, el, code){
-			el.html(el.html()+' (GDP - '+ $data[code]+')');
-		}
+		//onLabelShow: function(e, el, code){
+		//	el.html(el.html()+' (GDP - '+ $data[code]+')');
+		//}
 	});
 });

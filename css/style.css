@@ -1,0 +1,15 @@
+body {
+	margin: 0;
+}
+
+#world-map {
+	width: 900px; 
+	height: 600px;
+	float: left;
+}
+
+#nav {
+	width: 300px; 
+	height: 600px;
+	float: left;
+}
