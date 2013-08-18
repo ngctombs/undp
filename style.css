@@ -122,7 +122,7 @@ a {
 	top: 540px; right: 50px;
 	text-align: center;
 	font-size: 40px;
-	color: #112F61;
+	color: #4E6582;
 	font-weight: bold;
 	z-index: 250;
 }
@@ -167,9 +167,9 @@ a {
 }
 
 .custom_label {
-	background-color: #3385D6;
+	background-color: #6B8FD4;
 	height: 80px;
-	padding: 10px;
+	padding: 8px;
 	text-align: center;
 }
 
@@ -192,4 +192,8 @@ a {
 	overflow-y: scroll;
 	display: none;
 	text-align: center;
+}
+
+.right_nav_inner h1 {
+	color: #6B8FD4;
 }

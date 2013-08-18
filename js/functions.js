@@ -30,6 +30,7 @@ $(document).ready(function(){
 		});
 	}
 
+	//TODO: Make this suck less
 	function getISOJSON (code, name) {
 		$.getJSON('json/' + code + '.json', function(data) {
 			$('.right_nav_inner').html('');
@@ -71,9 +72,23 @@ $(document).ready(function(){
 			},
 			zoomOnScroll: true,
 			onRegionLabelShow: function(e, el, code){
-		    	el.html('<div class="custom_label"><h1>' + el.html()+'</h1><br/>' + $('.cat_title').html() + '<br /><h2>' + data[code]) + '</h2></div>';
+				//Clean up API call
+				y = [];
+				for (x in data){
+					if (data[x] != undefined){
+						y.push(data[x]);
+					}
+				}
+				y.sort().reverse();
+				if (data[code] != undefined) {
+					rank = ' (# ' +  (y.indexOf(data[code]) + 1)  + ' )';
+				} else {
+					rank = '';
+				}
+		    	el.html('<div class="custom_label"><h1>' + el.html() + rank + '</h1><br/>' + $('.cat_title').html() + '<br /><h2>' + data[code]) + '</h2></div>';
 		    },
 		    onRegionClick: function(e, code){
+		    	$('.right_nav').scrollTop(0);	
 		    	var map = $('#world-map').vectorMap('get', 'mapObject');
 		    	getISOJSON(code, map.getRegionName(code));
 		    }
@@ -97,6 +112,7 @@ $(document).ready(function(){
 		if (e.keyCode == 27) { 
 			$('.lightbox').addClass('lightbox_mask');
 			$('.right_nav').hide();
+			$('.right_nav').scrollTop(0);
 		};
 	});
 
@@ -106,6 +122,7 @@ $(document).ready(function(){
 
 	$('.right_nav .escape').click(function() {
 		$('.right_nav').hide();
+		$('.right_nav').scrollTop(0);
 	});
 
 	$('.light-link').click(function() {
