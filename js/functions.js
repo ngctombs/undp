@@ -73,6 +73,7 @@ $(document).ready(function(){
 			zoomOnScroll: true,
 			onRegionLabelShow: function(e, el, code){
 				//Clean up API call
+				/*"""
 				y = [];
 				for (x in data){
 					if (data[x] != undefined){
@@ -85,7 +86,8 @@ $(document).ready(function(){
 				} else {
 					rank = '';
 				}
-		    	el.html('<div class="custom_label"><h1>' + el.html() + rank + '</h1><br/>' + $('.cat_title').html() + '<br /><h2>' + data[code]) + '</h2></div>';
+				"""*/
+		    	el.html('<div class="custom_label"><h1>' + el.html() + '</h1><br/>' + $('.cat_title').html() + '<br /><h2>' + data[code]) + '</h2></div>';
 		    },
 		    onRegionClick: function(e, code){
 		    	$('.right_nav').scrollTop(0);	
